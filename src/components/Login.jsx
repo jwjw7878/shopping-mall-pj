@@ -50,7 +50,7 @@ const Login = ({ authcheck }) => {
     <>
       <h1 className="login-title">Login</h1>
       <Container>
-        <Form className="mx-auto" onSubmit={handleSubmit}>
+        <Form className="login-form" onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>이메일</Form.Label>
             <Form.Control

@@ -120,6 +120,10 @@ nav li:hover::after {
 }
 
 /* <Login/> */
+.login-form {
+  margin: auto;
+  min-width: 300px;
+}
 .login-title {
   text-align: center;
 }
@@ -235,18 +239,18 @@ nav li:hover::after {
   color: white;
   font-size: 32px;
 }
-@media (max-width: 800px) {
+@media (max-width: 900px) {
   .products-grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-@media (max-width: 500px) {
+@media (max-width: 600px) {
   .products-grid {
     margin-top: 100px;
     grid-template-columns: repeat(1, 1fr);
   }
   .auth,
-  form,
+  header form,
   header nav {
     display: none;
   }
@@ -254,5 +258,36 @@ nav li:hover::after {
     font-size: 32px;
     display: block;
     cursor: pointer;
+  }
+
+  /* <ProductDetail/> */
+  .detail-container {
+    flex-wrap: wrap;
+  }
+  .detail-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .detail-info .detail-title,
+  .detail-choice,
+  .detail-price,
+  .size-container,
+  .detail-amount,
+  .detail-info select,
+  .detail-cart {
+    margin-left: 0;
+  }
+  .detail-info .detail-title {
+    font-size: 18px;
+  }
+  .detail-choice {
+    font-size: 18px;
+  }
+  .size-container .detail-size {
+    padding: 10px;
+  }
+  .detail-cart {
+    padding: 10px 20px;
   }
 }
