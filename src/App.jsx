@@ -25,7 +25,7 @@ function App() {
       window.removeEventListener("scroll", scrollHandler);
     };
   }, []);
-  console.log(authentic);
+
   return (
     <>
       <Header auth={authentic} setAuth={setAuthentic} />
