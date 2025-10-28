@@ -39,6 +39,9 @@ form .search-icon,
   font-size: 28px;
   cursor: pointer;
 }
+.menu-icon {
+  display: none;
+}
 .auth {
   display: flex;
   align-items: center;
@@ -239,6 +242,17 @@ nav li:hover::after {
 }
 @media (max-width: 500px) {
   .products-grid {
+    margin-top: 100px;
     grid-template-columns: repeat(1, 1fr);
+  }
+  .auth,
+  form,
+  header nav {
+    display: none;
+  }
+  .menu-icon {
+    font-size: 32px;
+    display: block;
+    cursor: pointer;
   }
 }

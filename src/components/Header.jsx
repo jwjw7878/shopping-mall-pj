@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaSearch, FaHeart } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
+import { IoIosMenu } from "react-icons/io";
 
 const Header = ({ auth, setAuth }) => {
   const logoutHandler = () => {
@@ -40,6 +41,7 @@ const Header = ({ auth, setAuth }) => {
             <Link to="/login">Login</Link>
           )}
         </div>
+        <IoIosMenu className="menu-icon" />
       </div>
       <nav>
         <ul>
