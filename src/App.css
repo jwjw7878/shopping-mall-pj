@@ -264,6 +264,10 @@ nav li:hover::after {
   .detail-container {
     flex-wrap: wrap;
   }
+  .detail-img img {
+    width: 100%;
+  }
+
   .detail-info {
     display: flex;
     flex-direction: column;
