@@ -10,7 +10,9 @@ const ProductDetail = () => {
 
   const getDetailProduct = async () => {
     try {
-      const res = await fetch(`http://localhost:5000/products/${id}`);
+      const res = await fetch(
+        `https://my-json-server.typicode.com/jwjw7878/shopping-mall-pj/products/${id}`
+      );
       const data = await res.json();
       setProduct(data);
     } catch (err) {
