@@ -387,6 +387,7 @@ form .search-icon,
   .mobile-ul .mobile-li {
     padding: 20px 16px;
     width: 100%;
+    cursor: pointer;
   }
   .mobile-li:hover {
     background-color: white;

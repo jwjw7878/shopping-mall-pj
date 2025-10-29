@@ -30,6 +30,7 @@ const Header = ({ auth, setAuth }) => {
     if (e.key === "Enter") {
       e.preventDefault();
       sendSearch();
+      setMobile(false);
     }
   };
   return (
@@ -68,7 +69,8 @@ const Header = ({ auth, setAuth }) => {
         />
         <MobileNavbar
           menuList={menuList}
-          search={search}
+          onKeyHandler={onKeyHandler}
+          sendSearch={sendSearch}
           setSearch={setSearch}
           setMobile={setMobile}
           mobile={mobile}
