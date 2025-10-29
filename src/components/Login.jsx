@@ -41,8 +41,8 @@ const Login = ({ authcheck }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (errors.email === "" && errors.password === "") {
-      navigate("/");
       authcheck(true);
+      navigate("/");
     }
   };
 

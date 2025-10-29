@@ -1,13 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaSearch, FaHeart } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { IoIosMenu } from "react-icons/io";
+import MobileNavbar from "./MobileNavbar";
 
 const Header = ({ auth, setAuth }) => {
+  const [mobile, setMobile] = useState(false);
   const logoutHandler = () => {
     setAuth(false);
   };
+  const navigate = useNavigate();
   const menuList = [
     "여성",
     "Devided",
@@ -18,6 +22,16 @@ const Header = ({ auth, setAuth }) => {
     "Sale",
     "지속가능성",
   ];
+  const [search, setSearch] = useState("");
+  const sendSearch = () => {
+    navigate(`/?q=${search}`);
+  };
+  const onKeyHandler = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      sendSearch();
+    }
+  };
   return (
     <header>
       <div className="header-section">
@@ -29,8 +43,13 @@ const Header = ({ auth, setAuth }) => {
           />
         </Link>
         <form>
-          <input type="text" placeholder="상품명을 입력해주세요" />
-          <FaSearch className="search-icon" />
+          <input
+            type="text"
+            placeholder="상품명을 입력해주세요"
+            onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={onKeyHandler}
+          />
+          <FaSearch className="search-icon" onClick={sendSearch} />
         </form>
         <div className="auth">
           <FaHeart className="like-icon" />
@@ -41,12 +60,26 @@ const Header = ({ auth, setAuth }) => {
             <Link to="/login">Login</Link>
           )}
         </div>
-        <IoIosMenu className="menu-icon" />
+        <IoIosMenu
+          className="menu-icon"
+          onClick={() => {
+            setMobile(true);
+          }}
+        />
+        <MobileNavbar
+          menuList={menuList}
+          search={search}
+          setSearch={setSearch}
+          setMobile={setMobile}
+          mobile={mobile}
+        />
       </div>
-      <nav>
-        <ul>
+      <nav className="pc-nav">
+        <ul className="pc-ul">
           {menuList.map((menu, idx) => (
-            <li key={idx}>{menu}</li>
+            <li className="pc-li" key={idx}>
+              {menu}
+            </li>
           ))}
         </ul>
       </nav>
