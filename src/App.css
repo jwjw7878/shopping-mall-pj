@@ -47,6 +47,57 @@ form .search-icon,
   align-items: center;
   gap: 20px;
 }
+.like-page {
+  position: absolute;
+  top: 100px;
+  right: 0;
+  width: 30%;
+  height: 300px;
+  overflow: scroll;
+  overflow-x: hidden;
+  border: 2px solid black;
+  padding: 20px;
+  background-color: white;
+}
+.like-page h1 {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px 0;
+  margin-bottom: 20px;
+}
+.like-page ul {
+  list-style: none;
+}
+.like-page li {
+  display: flex;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  align-items: center;
+  margin: 10px 0;
+}
+.like-page img {
+  width: 100px;
+  height: 100px;
+  background-size: contain;
+}
+.like-page .like-remove {
+  font-size: 24px;
+  cursor: pointer;
+}
+.like-page .remove-all-btn {
+  display: block;
+  margin: 10px auto;
+  background-color: black;
+  color: white;
+  padding: 10px 16px;
+}
+.like-page .no-product-text {
+  text-align: center;
+  font-weight: bold;
+  margin: 20px 0;
+}
 .pc-nav {
   padding: 30px 0;
 }
@@ -125,6 +176,11 @@ form .search-icon,
   z-index: 21;
   top: 10px;
   right: 10px;
+  cursor: pointer;
+}
+.products-like-icon.active {
+  color: red;
+  cursor: pointer;
 }
 
 /* <Login/> */
@@ -155,6 +211,7 @@ form .search-icon,
 /* <ProductDetail/> */
 .detail-container {
   display: flex;
+  gap: 30px;
   justify-content: center;
   margin-top: 30px;
   margin-bottom: 200px;
@@ -305,6 +362,7 @@ form .search-icon,
   /* <ProductDetail/> */
   .detail-container {
     flex-wrap: wrap;
+    gap: 10px;
   }
   .detail-img img {
     width: 100%;

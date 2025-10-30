@@ -5,8 +5,10 @@ import { FaSearch, FaHeart } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { IoIosMenu } from "react-icons/io";
 import MobileNavbar from "./MobileNavbar";
+import Like from "./Like";
 
 const Header = ({ auth, setAuth }) => {
+  const [likeToggle, setLikeToggle] = useState(false);
   const [mobile, setMobile] = useState(false);
   const logoutHandler = () => {
     setAuth(false);
@@ -53,7 +55,10 @@ const Header = ({ auth, setAuth }) => {
           <FaSearch className="search-icon" onClick={sendSearch} />
         </form>
         <div className="auth">
-          <FaHeart className="like-icon" />
+          <FaHeart
+            className="like-icon"
+            onClick={() => setLikeToggle(!likeToggle)}
+          />
           <FaCartShopping className="cart-icon" />
           {auth ? (
             <Link onClick={logoutHandler}>Logout</Link>
@@ -84,6 +89,7 @@ const Header = ({ auth, setAuth }) => {
             </li>
           ))}
         </ul>
+        {likeToggle && <Like />}
       </nav>
     </header>
   );

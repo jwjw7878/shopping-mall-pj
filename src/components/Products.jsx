@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import NotFound from "./NotFound";
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { Link, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import Scroll from "./Scroll";
+import { LikeContext } from "./LikeContext";
 
 const Products = () => {
+  const { state, dispatch } = useContext(LikeContext);
+  console.log(state);
   const [query, setQuery] = useSearchParams();
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+
   const productsData = async () => {
     try {
       setLoading(true);
@@ -32,8 +37,8 @@ const Products = () => {
       {products.length > 0 ? (
         <div className="products-grid">
           {products.map((product) => (
-            <Link to={`/product/${product.id}`}>
-              <div key={product.id} className="item">
+            <div key={product.id} className="item">
+              <Link to={`/product/${product.id}`}>
                 {product.new ? <p className="new-item">new</p> : ""}
                 <img src={product.img} alt="product-img" />
                 <p className="choice">
@@ -41,14 +46,25 @@ const Products = () => {
                 </p>
                 <p className="title">{product.title}</p>
                 <p className="price">₩{product.price.toLocaleString()}</p>
-                <FaRegHeart className="products-like-icon" />
-              </div>
-            </Link>
+              </Link>
+              {state.like.find((item) => item.id === product.id) ? (
+                <FaHeart
+                  className="products-like-icon active"
+                  onClick={() => dispatch({ type: "toggle", payload: product })}
+                />
+              ) : (
+                <FaRegHeart
+                  className="products-like-icon"
+                  onClick={() => dispatch({ type: "toggle", payload: product })}
+                />
+              )}
+            </div>
           ))}
         </div>
       ) : (
         <NotFound />
       )}
+      <Scroll />
     </div>
   );
 };
